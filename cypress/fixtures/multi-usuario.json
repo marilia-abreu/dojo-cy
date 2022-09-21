@@ -1,0 +1,20 @@
+[
+    {
+        "nome": "Fábio Araújo",
+        "usuario": "teste@dojo.com",
+        "senha": "teste@123"
+    },
+
+    {
+        "nome": "Fabio",
+        "usuario": "fabio@dojo.com",
+        "senha": "teste@123"
+    },
+
+    {
+        "nome": "Felipe Araújo",
+        "usuario": "felipe@dojo.com",
+        "senha": "teste@123"
+    }
+]
+
