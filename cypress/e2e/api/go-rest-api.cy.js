@@ -9,7 +9,7 @@ describe('Ações do usuário', () => {
         cy.fixture('token.json').then(token => {
         bodyData = token 
         })
-        cy.log(token)
+        
     });
     it.only('Criar um novo usuário', () => {
         let email = `gorest_${Math.floor(Math.random() * 1000)}@dojo.com`
