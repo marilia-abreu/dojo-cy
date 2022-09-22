@@ -54,5 +54,5 @@ describe('Ações do usuário', () => {
             expect(response.body).to.have.property('user_id')
             expect(response.duration).be.lessThan(600)      
         })
-    });
+    })
 })
