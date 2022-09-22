@@ -11,7 +11,7 @@ describe('Ações do usuário', () => {
         })
         
     });
-    it.only('Criar um novo usuário', () => {
+    it('Criar um novo usuário', () => {
         let email = `gorest_${Math.floor(Math.random() * 1000)}@dojo.com`
 
         cy.request({
@@ -36,13 +36,12 @@ describe('Ações do usuário', () => {
 
     it('Criar uma nova publicação', () => {
         let text = `Oi, sou a publicação nº ${Math.floor(Math.random() * 1000)}`
-        let token = tokenGoRest
-
+        
         cy.request({
             method: 'POST',
             url:`https://gorest.co.in/public/v2/users/${Math.floor(Math.random() * 100)}/posts`,
             headers: {
-                Authorization: token
+                Authorization: bodyData.token
             },
             body: {
                 user: "marilia",
