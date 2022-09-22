@@ -105,4 +105,8 @@ dist
 
 screenshots/
 
-fixtures/
+fixtures/token.json
+
+teste/
+
+fixtures/teste.json
