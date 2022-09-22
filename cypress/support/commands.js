@@ -47,6 +47,7 @@ Cypress.Commands.add('token', () =>{
     })
 })
 
+
 Cypress.Commands.add('criarPerfil', (email, senha, nome) => {
     
     cy.get('.large').should('contain', 'Cadastrar')
