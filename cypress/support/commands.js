@@ -94,3 +94,14 @@ Cypress.Commands.add('criarPerfilInvalido', (email, senha, nome) => {
     
 })
 
+Cypress.Commands.add('criarPost', (token, texto) => {
+    cy.request({
+    method: 'POST',
+    url: 'api/posts',
+    headers: { Cookie: token },
+    body: {
+        text: texto
+    }
+})
+
+})
