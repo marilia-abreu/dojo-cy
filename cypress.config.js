@@ -5,6 +5,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: "https://conexaoqa.herokuapp.com/"
+    baseUrl: "https://conexaoqa.herokuapp.com/",
+    projectId: "fmz98f"
   },
 });

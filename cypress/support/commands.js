@@ -24,32 +24,31 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('login', (email, senha) => { 
+Cypress.Commands.add('login', (email, senha) => {
     cy.visit('login')
     cy.get('[data-test="login-email"] > .MuiInputBase-root > .MuiInputBase-input').type(email)
     cy.get('[data-test="login-password"] > .MuiInputBase-root > .MuiInputBase-input').type(senha)
     cy.get('[data-test="login-submit"]').click()
- })
+})
 
 import user from "../fixtures/multi-usuario.json"
 
-Cypress.Commands.add('token', () =>{
+Cypress.Commands.add('token', () => {
     cy.request({
         method: 'POST',
-        url:'api/auth',
+        url: 'api/auth',
         body: {
             "email": user[0].usuario,
             "password": user[0].senha
         }
     }).then((response) => {
         expect(response.status).to.equal(200)
-        return response.body.jwt     
+        return response.body.jwt
     })
 })
 
-
 Cypress.Commands.add('criarPerfil', (email, senha, nome) => {
-    
+
     cy.get('.large').should('contain', 'Cadastrar')
     cy.get('[data-test="register-name"] > .MuiInputBase-root > .MuiInputBase-input').type(nome)
     cy.get('[data-test="register-email"] > .MuiInputBase-root > .MuiInputBase-input').type(email)
@@ -68,11 +67,11 @@ Cypress.Commands.add('criarPerfil', (email, senha, nome) => {
     cy.get('[data-test="profile-skills"] > .MuiInputBase-root > .MuiInputBase-input').type('Testes Manuais, Cypress')
     cy.get('[data-test="profile-gitHub"] > .MuiInputBase-root > .MuiInputBase-input').type('marilia-abreu')
     cy.get('[data-test="profile-bio"] > .MuiInputBase-root').type('Sou QA Júnior há um ano e um mês')
-    
+
 })
 
 Cypress.Commands.add('criarPerfilInvalido', (email, senha, nome) => {
-    
+
     cy.get('.large').should('contain', 'Cadastrar')
     cy.get('[data-test="register-name"] > .MuiInputBase-root > .MuiInputBase-input').type(nome)
     cy.get('[data-test="register-email"] > .MuiInputBase-root > .MuiInputBase-input').type(email)
@@ -91,17 +90,33 @@ Cypress.Commands.add('criarPerfilInvalido', (email, senha, nome) => {
     cy.get('[data-test="profile-skills"] > .MuiInputBase-root > .MuiInputBase-input').type('Testes Manuais, Cypress')
     cy.get('[data-test="profile-gitHub"] > .MuiInputBase-root > .MuiInputBase-input').type('marilia-abreu')
     cy.get('[data-test="profile-bio"] > .MuiInputBase-root').type('Sou QA Júnior há um ano e um mês')
-    
+
 })
 
 Cypress.Commands.add('criarPost', (token, texto) => {
     cy.request({
-    method: 'POST',
-    url: 'api/posts',
-    headers: { Cookie: token },
-    body: {
-        text: texto
-    }
+        method: 'POST',
+        url: 'api/posts',
+        headers: { Cookie: token },
+        body: {
+            text: texto
+        }
+    })
+
 })
 
+Cypress.Commands.add('loginApp', () => {
+    cy.request({
+        method: 'POST',
+        url: 'api/auth',
+        body:
+        {
+            "email": user[0].usuario,
+            "password": user[0].senha
+        }
+    }).then((response) => {
+        cy.setCookie('location', 'BR-PR')
+        window.localStorage.setItem('logadoCom', user[0].usuario)
+        window.localStorage.setItem('jwt2', response.body.jwt)
+    })
 })

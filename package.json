@@ -4,7 +4,9 @@
   "description": "Projeto de automação de testes do Dojo Cypress - Turma 3",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy-run": "npx cypress run --browser chrome",
+    "cy-dashboard": "npx cypress run --record --key d9f20fe5-5b17-400e-8755-97e07cc46c1b"
   },
   "repository": {
     "type": "git",
